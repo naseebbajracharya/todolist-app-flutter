@@ -10,7 +10,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
   Widget _buildTask(int index){
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: ListTile(
+      child: Column(
+        children: <Widget>[
+        ListTile(
         title: Text('Task Title'),
         subtitle: Text('Oct.22, 2020 • High'),
         trailing: Checkbox(onChanged: (value){
@@ -18,7 +20,10 @@ class _TodoListScreenState extends State<TodoListScreen> {
         },
         activeColor: Theme.of(context).primaryColor,
         value: true,
-        ),
+            ),
+          ),
+          Divider(),
+        ],
       ),
     );
   }
