@@ -33,6 +33,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       }
   }
 
+  _submit(){
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      print('$_title, $_date, $_priority');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +47,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         onTap: () => FocusScope.of(context).unfocus(),
               child: SingleChildScrollView(
                 child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 80.0),
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 60.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -48,7 +55,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 onTap: () => Navigator.pop(context),
                 child: Icon(
                   Icons.arrow_back_ios,
-                  size: 30.0,
+                  size: 25.0,
                   color: Theme.of(context).primaryColor
                   ),
               ),
@@ -65,14 +72,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 key: _formKey,
                 child: Column(children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20.0),
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 18.0),
+                      style: TextStyle(fontSize: 15.0),
                       decoration: InputDecoration(
                         labelText: 'Task Title',
                         labelStyle: TextStyle(fontSize: 18.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(0.0),
                         )
                       ),
                       validator: (input) => input.trim().isEmpty ? 'Please enter task title' : null,
@@ -86,13 +93,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     child: TextFormField(
                       readOnly: true,
                       controller: _dateController,
-                      style: TextStyle(fontSize: 18.0),
+                      style: TextStyle(fontSize: 15.0),
                       onTap: _handleDatePicker,
                       decoration: InputDecoration(
                         labelText: 'Task Date',
                         labelStyle: TextStyle(fontSize: 18.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(0.0),
                         )
                       ),
                     ),
@@ -110,12 +117,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           child: Text(priority, style: TextStyle(color: Colors.black, fontSize: 18.0,),),
                         );
                       }).toList(),
-                      style: TextStyle(fontSize: 18.0),
+                      style: TextStyle(fontSize: 15.0),
                       decoration: InputDecoration(
                         labelText: 'Task Priority',
                         labelStyle: TextStyle(fontSize: 18.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(0.0),
                         )
                       ),
                       validator: (input) => _priority == null ? 'Please select a priority level' : null,
@@ -128,8 +135,26 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       value: _priority,
                     ),
                   ),
-
-                ],),)
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 20.0),
+                    height: 50.0,
+                    width: double.infinity,
+                    decoration: BoxDecoration(color: Theme.of(context).primaryColor, 
+                    borderRadius: BorderRadius.circular(60.0),
+                    ),
+                    child: FlatButton(
+                      child: Text('Add', 
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0
+                      ),
+                      ),
+                      onPressed: _submit,
+                    ),
+                  ),
+                 ],
+                ),
+              )
              ],
             ),
           ),
