@@ -11,6 +11,12 @@ class _TodoListScreenState extends State<TodoListScreen> {
     return ListTile(
       title: Text('Task Title'),
       subtitle: Text('Oct.22, 2020 • High'),
+      trailing: Checkbox(onChanged: (value){
+        print(value);
+      },
+      activeColor: Theme.of(context).primaryColor,
+      value: true,
+      ),
     );
   }
 
