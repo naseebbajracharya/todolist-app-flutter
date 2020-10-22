@@ -8,7 +8,12 @@ class TodoListScreen extends StatefulWidget {
 class _TodoListScreenState extends State<TodoListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        child: Icon(Icons.add_circle),
+        onPressed: () => print('Task Screen'),
+      ),
       
     );
   }
