@@ -6,6 +6,14 @@ class TodoListScreen extends StatefulWidget {
 }
 
 class _TodoListScreenState extends State<TodoListScreen> {
+
+  Widget _buildTask(int index){
+    return ListTile(
+      title: Text('Task Title'),
+      subtitle: Text('Oct.22, 2020 • High'),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +23,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
         onPressed: () => print('Task Screen'),
       ),
       body: ListView.builder(
-        padding: EdgeInsets.symmetric(vertical: 80.0),
+        padding: EdgeInsets.symmetric(vertical: 40.0),
         itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           if(index == 0){
@@ -30,12 +38,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
               ),
             );
           }
-          return Container(
-            margin: EdgeInsets.all(10.0),
-            height: 100.0, 
-            width: double.infinity,
-            color: Colors.green
-            );
+          return _buildTask(index);
         }
       ),
       
