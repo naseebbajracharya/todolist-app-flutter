@@ -16,7 +16,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
       ),
       body: ListView.builder(
         padding: EdgeInsets.symmetric(vertical: 80.0),
-        itemCount: 1,
+        itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           if(index == 0){
             return Padding(
@@ -31,6 +31,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
             );
           }
           return Container(
+            margin: EdgeInsets.all(10.0),
             height: 100.0, 
             width: double.infinity,
             color: Colors.green
