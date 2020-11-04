@@ -12,4 +12,13 @@ class DatabaseHelper {
   String colDate = 'date';
   String colPriority = 'priority';
   String colStatus = 'status';
+
+  Future<Database> get db async {
+    if(_db == null) {
+      _db = await _initDb();
+    }
+    return _db;
+  }
+
+  
 }
