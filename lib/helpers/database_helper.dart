@@ -29,4 +29,9 @@ class DatabaseHelper {
     final todoListDb = await openDatabase(path, version: 1, onCreate: _createDb);
     return todoListDb;
   }
+
+  void _createDb(Database db, int version) async {
+    await db.execute(
+      'CREATE TABLE $tasksTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, $colDate TEXT, $colPriority TEXT, $colStatus INTEGER');
+  }
 }
