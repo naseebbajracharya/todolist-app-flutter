@@ -53,5 +53,12 @@ class DatabaseHelper {
     taskList.sort((taskA, taskB) => taskA.date.compareTo(taskB.date));
     return taskList;
   }
+
+  //Insert fn
+  Future<int> insertTask(Task task) async {
+    Database db = await this.db;
+    final int result = await db.insert(tasksTable, task.toMap());
+    return result;
+  }
 }
 
