@@ -60,5 +60,17 @@ class DatabaseHelper {
     final int result = await db.insert(tasksTable, task.toMap());
     return result;
   }
+
+  //Update fn
+  Future<int> updateTask(Task task) async {
+    Database db = await this.db;
+    final int result = await db.update(
+      tasksTable,
+      task.toMap(),
+      where: '$colId = ?',
+      whereArgs: [task.id],
+    );
+    return result;
+  }
 }
 
