@@ -50,7 +50,6 @@ class DatabaseHelper {
     taskMapList.forEach((taskMap) {
       taskList.add(Task.fromMap(taskMap));
     });
-    taskList.sort((taskA, taskB) => taskA.date.compareTo(taskB.date));
     return taskList;
   }
 
@@ -69,6 +68,17 @@ class DatabaseHelper {
       task.toMap(),
       where: '$colId = ?',
       whereArgs: [task.id],
+    );
+    return result;
+  }
+
+  //Delete fn
+  Future<int> deleteTask(int id) async {
+    Database db = await this.db;
+    final int result = await db.delete(
+      tasksTable,
+      where: '$colId = ?',
+      whereArgs: [id],
     );
     return result;
   }
