@@ -58,6 +58,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
       body: FutureBuilder(
         future: _taskList,
         builder: (context, snapshot) {
+          if(!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
               return ListView.builder(
           padding: EdgeInsets.symmetric(vertical: 40.0),
           itemCount: 10,
