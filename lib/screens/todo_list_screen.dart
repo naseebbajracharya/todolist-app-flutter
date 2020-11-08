@@ -63,6 +63,12 @@ class _TodoListScreenState extends State<TodoListScreen> {
               child: CircularProgressIndicator(),
             );
           }
+
+          final int completedTaskCount = snapshot.data
+          .where((Task task) => task.status == 1)
+          .toList()
+          .length;
+
               return ListView.builder(
           padding: EdgeInsets.symmetric(vertical: 40.0),
           itemCount: 1 + snapshot.data.length,
@@ -74,12 +80,12 @@ class _TodoListScreenState extends State<TodoListScreen> {
                 children: <Widget>[
                   Text('My Tasks', style: TextStyle(color: Colors.black, fontSize: 40.0, fontWeight: FontWeight.bold),),
                   SizedBox(height: 10.5,),
-                  Text('1 of 5', style: TextStyle(color: Colors.grey, fontSize: 20.0, fontWeight: FontWeight.w600),),
+                  Text('$completedTaskCount of ${snapshot.data.length}', style: TextStyle(color: Colors.grey, fontSize: 20.0, fontWeight: FontWeight.w600),),
                 ],
                 ),
               );
             }
-            return _buildTask(index);
+            return _buildTask(snapshot.data[index - 1]);
           },
         );
         },
