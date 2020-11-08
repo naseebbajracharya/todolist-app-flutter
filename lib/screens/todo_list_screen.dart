@@ -65,7 +65,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
           }
               return ListView.builder(
           padding: EdgeInsets.symmetric(vertical: 40.0),
-          itemCount: 10,
+          itemCount: 1 + snapshot.data.length,
           itemBuilder: (BuildContext context, int index) {
             if(index == 0){
               return Padding(
