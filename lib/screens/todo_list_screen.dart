@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todolist_app/helpers/database_helper.dart';
+import 'package:todolist_app/models/task_modal.dart';
 import 'package:todolist_app/screens/add_task_screen.dart';
 
 class TodoListScreen extends StatefulWidget {
@@ -7,6 +9,20 @@ class TodoListScreen extends StatefulWidget {
 }
 
 class _TodoListScreenState extends State<TodoListScreen> {
+
+  Future<List<Task>> _taskList;
+
+  @override
+  void initState() { 
+    super.initState();
+    _updateTaskList();
+  }
+
+  _updateTaskList() {
+    setState(() {
+      _taskList = DatabaseHelper.instance.getTaskList();
+    });
+  }
 
   Widget _buildTask(int index){
     return Padding(
