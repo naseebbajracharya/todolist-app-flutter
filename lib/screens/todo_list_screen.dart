@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:todolist_app/helpers/database_helper.dart';
 import 'package:todolist_app/models/task_modal.dart';
 import 'package:todolist_app/screens/add_task_screen.dart';
@@ -11,6 +12,7 @@ class TodoListScreen extends StatefulWidget {
 class _TodoListScreenState extends State<TodoListScreen> {
 
   Future<List<Task>> _taskList;
+  final DateFormat _dateFormatter = DateFormat('MMM dd, yyyy');
 
   @override
   void initState() { 
@@ -24,14 +26,14 @@ class _TodoListScreenState extends State<TodoListScreen> {
     });
   }
 
-  Widget _buildTask(int index){
+  Widget _buildTask(Task task){
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
         children: <Widget>[
         ListTile(
-        title: Text('Task Title'),
-        subtitle: Text('Oct.22, 2020 • High'),
+        title: Text(task.title),
+        subtitle: Text('${_dateFormatter.format(task.date)} • ${task.priority}'),
         trailing: Checkbox(onChanged: (value){
           print(value);
         },
