@@ -32,7 +32,10 @@ class _TodoListScreenState extends State<TodoListScreen> {
       child: Column(
         children: <Widget>[
         ListTile(
-        title: Text(task.title),
+        title: Text(task.title,
+        style: TextStyle(fontSize: 18.0,
+        decoration: task.status == 0 ? TextDecoration.none : TextDecoration.lineThrough),
+        ),
         subtitle: Text('${_dateFormatter.format(task.date)} • ${task.priority}'),
         trailing: Checkbox(onChanged: (value){
           print(value);
