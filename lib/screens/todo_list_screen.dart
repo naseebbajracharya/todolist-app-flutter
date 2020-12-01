@@ -36,7 +36,10 @@ class _TodoListScreenState extends State<TodoListScreen> {
         style: TextStyle(fontSize: 18.0,
         decoration: task.status == 0 ? TextDecoration.none : TextDecoration.lineThrough),
         ),
-        subtitle: Text('${_dateFormatter.format(task.date)} • ${task.priority}'),
+        subtitle: Text('${_dateFormatter.format(task.date)} • ${task.priority}',
+        style: TextStyle(fontSize: 14.0,
+        decoration: task.status == 0 ? TextDecoration.none : TextDecoration.lineThrough),
+        ),
         trailing: Checkbox(onChanged: (value){
           print(value);
         },
