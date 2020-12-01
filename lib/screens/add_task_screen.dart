@@ -27,6 +27,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   void initState() { 
     super.initState();
+
+    if(widget.task != null) {
+      _title = widget.task.title;
+      _date = widget.task.date;
+      _priority = widget.task.priority;
+    }
+
     _dateController.text = _dateFormatter.format(_date);
   }
 
