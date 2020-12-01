@@ -49,6 +49,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
         activeColor: Theme.of(context).primaryColor,
         value: true,
             ),
+            onTap: () => Navigator.push(context, MaterialPageRoute(
+              builder: (_) => AddTaskScreen(task: task),
+            )),
           ),
           Divider(),
         ],
