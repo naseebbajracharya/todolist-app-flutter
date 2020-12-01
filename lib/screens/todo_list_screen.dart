@@ -40,8 +40,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
         style: TextStyle(fontSize: 14.0,
         decoration: task.status == 0 ? TextDecoration.none : TextDecoration.lineThrough),
         ),
-        trailing: Checkbox(onChanged: (value){
-          print(value);
+        trailing: Checkbox(
+          onChanged: (value){
+          task.status = value ? 1 : 0;
+          DatabaseHelper.instance.updateTask(task);
+          _updateTaskList();
         },
         activeColor: Theme.of(context).primaryColor,
         value: true,
