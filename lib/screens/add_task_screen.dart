@@ -105,7 +105,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   ),
               ),
               SizedBox(height: 20.0,),
-              Text('Add Task', 
+              Text(
+                widget.task == null ? 'Add Task' : 'Update Task', 
               style: TextStyle(
                 color: Colors.black, 
                 fontSize: 40.0, 
@@ -189,7 +190,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     borderRadius: BorderRadius.circular(60.0),
                     ),
                     child: FlatButton(
-                      child: Text('Add', 
+                      child: Text(
+                        widget.task == null ? 'Add' : 'Update', 
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0
