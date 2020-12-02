@@ -75,6 +75,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         DatabaseHelper.instance.insertTask(task);
       }else {
         //update task
+        task.id = widget.task.id;
         task.status = widget.task.status;
         DatabaseHelper.instance.updateTask(task);
       }
