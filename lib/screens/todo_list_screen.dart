@@ -68,7 +68,10 @@ class _TodoListScreenState extends State<TodoListScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
         child: Icon(Icons.add_circle),
-        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AddTaskScreen(),
+        onPressed: () => Navigator.push(context, MaterialPageRoute(
+          builder: (_) => AddTaskScreen(
+            updateTaskList: _updateTaskList(),
+          ),
          ),
         ),
       ),
