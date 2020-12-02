@@ -50,7 +50,10 @@ class _TodoListScreenState extends State<TodoListScreen> {
         value: true,
             ),
             onTap: () => Navigator.push(context, MaterialPageRoute(
-              builder: (_) => AddTaskScreen(task: task),
+              builder: (_) => AddTaskScreen(
+                updateTaskList: _updateTaskList,
+                task: task)
+                ,
             )),
           ),
           Divider(),

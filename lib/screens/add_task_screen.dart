@@ -5,9 +5,11 @@ import 'package:todolist_app/models/task_modal.dart';
 
 class AddTaskScreen extends StatefulWidget {
 
+  final Function updateTaskList;
+
   final Task task;
 
-  AddTaskScreen({this.task});
+  AddTaskScreen({this.updateTaskList, this.task});
 
 
   @override
@@ -77,7 +79,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         DatabaseHelper.instance.updateTask(task);
       }
 
-
+      widget.updateTaskList();
       Navigator.pop(context);
     }
   }
