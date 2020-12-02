@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:todolist_app/helpers/database_helper.dart';
 import 'package:todolist_app/models/task_modal.dart';
 
 class AddTaskScreen extends StatefulWidget {
@@ -65,8 +66,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       _formKey.currentState.save();
       print('$_title, $_date, $_priority');
 
-      //insert task to user's db
-
+      Task task = Task(title: _title, date: _date, priority: _priority);
+      if(widget.task == null) {
+        //insert task to user's db
+        task.status = 0;
+        DatabaseHelper.instance.insertTask(task);
+      }
       //update task
 
 
