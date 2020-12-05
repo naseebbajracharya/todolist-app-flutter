@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'To-Do List',
       //debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        
+        fontFamily: 'Brand-Regular',
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
