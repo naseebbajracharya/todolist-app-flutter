@@ -63,6 +63,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       }
   }
 
+  _delete(){
+    DatabaseHelper.instance.deleteTask(widget.task.id);
+    widget.updateTaskList();
+    Navigator.pop(context);
+  }
+
   _submit(){
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
