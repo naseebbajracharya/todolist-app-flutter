@@ -200,6 +200,24 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       onPressed: _submit,
                     ),
                   ),
+                  widget.task != null ? Container(
+                    margin: EdgeInsets.symmetric(vertical: 20.0),
+                    height: 50.0,
+                    width: double.infinity,
+                    decoration: BoxDecoration(color: Theme.of(context).primaryColor, 
+                    borderRadius: BorderRadius.circular(60.0),
+                    ),
+                    child: FlatButton(
+                      child: Text(
+                        'Delete', 
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0
+                      ),
+                      ),
+                      onPressed: _delete,
+                    ),
+                  ) : SizedBox.shrink(),
                  ],
                 ),
               )
