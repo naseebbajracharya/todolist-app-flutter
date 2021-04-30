@@ -2,5 +2,3 @@
 
 A new Flutter project using SQLite.
 
-## Under Development
-
